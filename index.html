@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neat Subscription</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Dream+Avenue&family=Poppins&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Background Video -->
+  <video autoplay muted loop id="bgVideo" playsinline>
+    <source src="images/WhatsApp Video 2025-05-17 at 10.12.32_eb9103df.mp4" type="video/mp4" />
+    <!-- Add fallback text or alternative sources if needed -->
+  </video>
+
+<!-- Subscription Popup -->
+<div class="overlay" id="subscriptionPopup" >
+  <div class="popup-card" id="popupCard">
+
+    <!-- Logo -->
+    <div class="popup-logo">
+      <!-- You can replace this with an actual image or SVG -->
+      <img src="images/logo2.png" alt="Neat Logo" />
+    </div>
+
+    <h2>Join the Neat List</h2>
+    <p>Get early access now!</p>
+
+    <form id="subscribeForm">
+      <div class="input-group">
+        <input type="email" id="email" name="email" required placeholder=" " />
+        <label for="email">Your Email</label>
+      </div>
+      <button type="submit" class="subscribe-btn">Subscribe</button>
+    </form>
+
+  </div>
+</div>
+
+
+<div class="thank-you-message hidden" id="thankYouMsg" data-aos="fade-down" data-aos-delay="400">
+  <h1 class="brand-name">NEAT</h1>
+  <p class="drop-date">One Of Nun : July 15, 2025</p>
+  <p class="attractive-text">Get ready for the freshest drop to elevate your style and turn heads everywhere.</p>
+  <p class="see-you">See You In The Inside</p>
+</div>
+
+  </div>
+
+
+
+
+  <script type="module" src="scripts.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1200, // Animation duration
+    once: false,    // Animation will run every time you scroll
+  });
+</script>
+
+<script>
+    window.addEventListener('load', () => {
+  const bgMusic = document.getElementById('bgMusic');
+  bgMusic.play().catch(() => {
+    // Autoplay might be blocked by browser if not muted or user interaction
+    console.log('Autoplay prevented by browser');
+  });
+});
+
+</script>
+
+</body>
+</html>
