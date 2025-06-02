@@ -242,11 +242,12 @@
   border-radius: 10px;
   width: 100%;
   color: rgb(0, 0, 0);
-  font-weight: bold;
+  font-weight: 100;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-sizing: border-box;
 }
+
 
 .subscribe-btn:hover {
   transform: scale(1.05);

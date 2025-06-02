@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "clean-css": "^5.3.3",
+    "neat-email-list": "file:",
     "terser": "^5.40.0"
   }
 }
