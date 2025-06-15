@@ -22,8 +22,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
  <link rel="manifest" href="/site.webmanifest?v=2">
 
-
-
   <!-- Open Graph -->
   <meta property="og:site_name" content="Neatgarms">
   <meta property="og:title" content="Neatgarms">
@@ -55,11 +53,19 @@
   </script>
 </head>
 <body>
-  <!-- Background Video -->
-  <video autoplay muted loop id="bgVideo" playsinline>
-    <source src="images/whatsapp-video-2025-05-17-at-101232-eb9103df_nG0tfoU8.mp4" type="video/mp4" />
-    <!-- Add fallback text or alternative sources if needed -->
-  </video>
+
+<video
+  autoplay
+  muted
+  loop
+  playsinline
+  webkit-playsinline   
+  preload="auto"      
+  id="bgVideo"
+>
+  <source src="images/whatsapp-video-2025-05-17-at-101232-eb9103df_nG0tfoU8.mp4" type="video/mp4">
+</video>
+
 
 <!-- Subscription Popup -->
 <div class="overlay" id="subscriptionPopup" >
