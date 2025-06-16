@@ -20,6 +20,7 @@
   filter: brightness(0.7) blur(1px);
   z-index: -1;
   transition: filter 1s ease;
+  pointer-events: none; 
 }
 
 /* Subscription Popup */
