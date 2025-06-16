@@ -9,29 +9,21 @@
   font-display: swap;
 }
 
-/* Always‑on image fallback */
-body {
-  background: url("images/fallback.jpg") center / cover no-repeat fixed;
-}
 
-/* Video styling */
+
+/* Background Video */
 #bgVideo {
   position: fixed;
-  inset: 0;                 /* shorthand for top/left/right/bottom 0 */
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  filter: brightness(.7) blur(1px);
+  filter: brightness(0.7) blur(1px);
   z-index: -1;
   transition: filter 1s ease;
-  pointer-events: none;
+  pointer-events: none; 
 }
-
-/* Once the video really starts playing, hide the backup */
-body.video‑ok {
-  background: none;
-}
-
 
 /* Subscription Popup */
 .overlay {
