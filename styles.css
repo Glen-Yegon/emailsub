@@ -9,14 +9,9 @@
   font-display: swap;
 }
 
-  /* Safety‑net background always there */
-  body {
-    background: url("images/lp12\(main\).webp") center / cover no-repeat fixed;
-  }
-
 /* Background Video */
 #bgVideo {
-  position: fixed; inset: 0;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -27,10 +22,6 @@
   transition: filter 1s ease;
   pointer-events: none; 
 }
-
-/* when video is good, unhide it and remove the CSS background */
-body.video‑ok     { background: none; }
-body.video‑ok #bgVideo { visibility: visible; }
 
 /* Subscription Popup */
 .overlay {
