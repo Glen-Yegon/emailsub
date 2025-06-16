@@ -55,16 +55,13 @@
 <body>
 
 <video id="bgVideo"
-       autoplay muted loop
-       playsinline webkit-playsinline
+       autoplay muted loop playsinline webkit-playsinline
        preload="auto"
-       poster="images/lp12(main).webp">
+       poster="images/lp12(main).jpg">          <!-- use JPG/PNG -->
   <source src="images/bgvid.mp4" type="video/mp4">
-  <!-- old‑browser fallback -->
-  <img src="images/lp12(main).webp" alt="Background (video unsupported)">
+  <img src="images/lp12(main).jpg"
+       alt="Background image (video unsupported)">
 </video>
-
-
 
 <!-- Subscription Popup -->
 <div class="overlay" id="subscriptionPopup" >
@@ -119,32 +116,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const video = document.getElementById('bgVideo');
   if (!video) return;
 
-  /* 1.  Success path: first time the clip actually starts playing */
-  video.addEventListener('playing', () => {
-    document.body.classList.add('video-ok');   // show video, drop image
-  }, { once: true });
+  const showImage = () => document.body.classList.remove('video-ok');
 
-  /* 2.  Failure paths */
-  const showFallback = () => {
-    /* keep <video> in DOM but invisible; fallback image still visible */
-    document.body.classList.remove('video-ok');
-  };
+  video.addEventListener('playing', () =>
+    document.body.classList.add('video-ok'), { once:true });
 
-  /* a) hard error (bad codec, 404, etc.) */
-  video.addEventListener('error', showFallback, { once: true });
+  video.addEventListener('error', showImage, { once:true });
 
-  /* b) Autoplay blocked */
-  const attempt = video.play?.();
-  if (attempt) attempt.catch(showFallback);
-  else         showFallback();  // ancient browser without .play()
+  (video.play?.() || Promise.reject()).catch(showImage);
 
-  /* c) Slow networks: give it 4 s to start, then give up */
-  setTimeout(() => {
-    if (video.currentTime === 0) showFallback();
-  }, 4000);
+  /* Slow‑network timeout */
+  setTimeout(() => { if (video.currentTime === 0) showImage(); }, 4000);
 });
 </script>
-
 
 </body>
 </html>
