@@ -14,9 +14,6 @@
     background: url("images/lp12\(main\).webp") center / cover no-repeat fixed;
   }
 
-  body.video-ok { background: none; }   /* turned off once video plays */
-
-
 /* Background Video */
 #bgVideo {
   position: fixed; inset: 0;
@@ -29,7 +26,13 @@
   z-index: -1;
   transition: filter 1s ease;
   pointer-events: none; 
+    /* keep it off‑screen until JS confirms it’s actually playing */
+  visibility: hidden; 
 }
+
+/* when video is good, unhide it and remove the CSS background */
+body.video‑ok     { background: none; }
+body.video‑ok #bgVideo { visibility: visible; }
 
 /* Subscription Popup */
 .overlay {

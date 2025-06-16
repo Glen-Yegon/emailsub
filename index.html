@@ -54,20 +54,16 @@
 </head>
 <body>
 
-<video
-  autoplay
-  muted
-  loop
-  playsinline
-  webkit-playsinline   
-  preload="auto"      
-  id="bgVideo"
->
+<video id="bgVideo"
+       autoplay muted loop
+       playsinline webkit-playsinline
+       preload="auto"
+       poster="images/lp12(main).webp">
   <source src="images/bgvid.mp4" type="video/mp4">
-    <!-- Last‑ditch fallback if <video> itself is unsupported -->
-  <img src="images/lp12(main).webp"
-       alt="Background image (video not supported)">
+  <!-- old‑browser fallback -->
+  <img src="images/lp12(main).webp" alt="Background (video unsupported)">
 </video>
+
 
 
 <!-- Subscription Popup -->
@@ -118,28 +114,37 @@
 </script>
 
 
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const video = document.getElementById('bgVideo');
   if (!video) return;
 
-  const showImage = () => document.body.classList.remove('video-ok');
+  /* 1.  Success path: first time the clip actually starts playing */
+  video.addEventListener('playing', () => {
+    document.body.classList.add('video-ok');   // show video, drop image
+  }, { once: true });
 
-  /* Real success = 'playing' event */
-  video.addEventListener('playing', () =>
-    document.body.classList.add('video-ok'), { once:true });
+  /* 2.  Failure paths */
+  const showFallback = () => {
+    /* keep <video> in DOM but invisible; fallback image still visible */
+    document.body.classList.remove('video-ok');
+  };
 
-  /* Autoplay rejected, codec error, 404, etc.*/
-  video.addEventListener('error', showImage, { once:true });
-  (video.play?.() || Promise.reject()).catch(showImage);
+  /* a) hard error (bad codec, 404, etc.) */
+  video.addEventListener('error', showFallback, { once: true });
 
-  /* Slow connections timeout */
+  /* b) Autoplay blocked */
+  const attempt = video.play?.();
+  if (attempt) attempt.catch(showFallback);
+  else         showFallback();  // ancient browser without .play()
+
+  /* c) Slow networks: give it 4 s to start, then give up */
   setTimeout(() => {
-    if (video.currentTime === 0) showImage();
+    if (video.currentTime === 0) showFallback();
   }, 4000);
 });
 </script>
+
 
 </body>
 </html>
