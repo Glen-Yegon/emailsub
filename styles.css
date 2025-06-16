@@ -26,8 +26,6 @@
   z-index: -1;
   transition: filter 1s ease;
   pointer-events: none; 
-    /* keep it off‑screen until JS confirms it’s actually playing */
-  visibility: hidden; 
 }
 
 /* when video is good, unhide it and remove the CSS background */
