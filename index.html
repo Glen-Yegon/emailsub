@@ -7,7 +7,7 @@
       content="Discover Neatgarms — modern streetwear, everyday essentials and limited drops designed for confident self‑expression. Shipping worldwide from Kenya.">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Neatgarms</title>
-  <link rel="stylesheet" href="styles.min.css" />
+  <link rel="stylesheet" href="styles.css" />
   <link rel="preload" as="video" href="images/whatsapp-video-2025-05-17-at-101232-eb9103df_nG0tfoU8.mp4" type="video/mp4">
   <!-- Google Fonts -->
    <link rel="canonical" href="https://neatgarms.com/" />
@@ -64,7 +64,8 @@
   id="bgVideo"
 >
   <source src="images/bgvid.mp4" type="video/mp4">
-    <img src="images/lp15m.webp"
+    <!-- Last‑ditch fallback if <video> itself is unsupported -->
+  <img src="images/lp12(main).webp"
        alt="Background image (video not supported)">
 </video>
 
@@ -116,6 +117,29 @@
   });
 </script>
 
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const video = document.getElementById('bgVideo');
+  if (!video) return;
+
+  const showImage = () => document.body.classList.remove('video-ok');
+
+  /* Real success = 'playing' event */
+  video.addEventListener('playing', () =>
+    document.body.classList.add('video-ok'), { once:true });
+
+  /* Autoplay rejected, codec error, 404, etc.*/
+  video.addEventListener('error', showImage, { once:true });
+  (video.play?.() || Promise.reject()).catch(showImage);
+
+  /* Slow connections timeout */
+  setTimeout(() => {
+    if (video.currentTime === 0) showImage();
+  }, 4000);
+});
+</script>
 
 </body>
 </html>

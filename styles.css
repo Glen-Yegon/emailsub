@@ -9,11 +9,17 @@
   font-display: swap;
 }
 
+  /* Safety‑net background always there */
+  body {
+    background: url("images/lp12\(main\).webp") center / cover no-repeat fixed;
+  }
+
+  body.video-ok { background: none; }   /* turned off once video plays */
 
 
 /* Background Video */
 #bgVideo {
-  position: fixed;
+  position: fixed; inset: 0;
   top: 0;
   left: 0;
   width: 100vw;
