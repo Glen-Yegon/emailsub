@@ -54,18 +54,17 @@
 </head>
 <body>
 
-<video
-  autoplay
-  muted
-  loop
-  playsinline
-  webkit-playsinline   
-  preload="auto"      
-  id="bgVideo"
->
-  <source src="images/0324(2).mp4" type="video/mp4">
-   Your browser does not support the video tag.
+<!-- Put this as high in <body> as possible -->
+<video id="bgVideo"
+       autoplay muted loop
+       playsinline webkit-playsinline
+       preload="auto"
+       poster="images/fallback.jpg">     <!-- still frame while loading -->
+  <source src="images/rihana.jpg" type="video/mp4">
+  <!-- <source src="images/bgvid.webm" type="video/webm">  (optional extra codec) -->
+  <!-- If the browser understands neither source, it will skip the video element -->
 </video>
+
 
 
 <!-- Subscription Popup -->
@@ -113,6 +112,32 @@
     duration: 1200, // Animation duration
     once: false,    // Animation will run every time you scroll
   });
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const video = document.getElementById('bgVideo');
+  if (!video) return;
+
+  const giveUp = () => {
+    /* Could also do: video.style.display = 'none'; */
+    video.remove();
+  };
+
+  /* Try to autoplay */
+  const playAttempt = video.play?.();
+  if (playAttempt !== undefined) {
+    playAttempt
+      .then(() => document.body.classList.add('video-ok'))   // success 🎉
+      .catch(giveUp);                                        // blocked 🚫
+  } else {
+    giveUp();                                                // no .play() support
+  }
+
+  /* Hard failure (e.g., codec not supported) */
+  video.addEventListener('error', giveUp, { once: true });
+});
 </script>
 
 
