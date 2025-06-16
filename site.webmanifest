@@ -1,36 +1,21 @@
 {
   "name": "Neatgarms",
   "short_name": "Neatgarms",
-  "description": "Neatgarms is a premium clothing brand delivering timeless style, modern comfort, and authentic expression.",
-  "start_url": "/",
-  "scope": "/",
-  "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#ae866a",
+"icons": [
+  {
+    "src": "/web-app-manifest-192x192.png",
+    "sizes": "192x192",
+    "type": "image/png",
+    "purpose": "any maskable"
+  },
+  {
+    "src": "/web-app-manifest-512x512.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "any maskable"
+  }
+],
   "theme_color": "#ae866a",
-  "icons": [
-    {
-      "src": "images/favicon-96x96.png",
-      "sizes": "96x96",
-      "type": "image/png"
-    },
-    {
-      "src": "images/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "images/favicon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "images/favicon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
+  "background_color": "#ae866a",
+  "display": "standalone"
 }
