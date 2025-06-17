@@ -8,13 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#ae866a">
   <title>Neatgarms</title>
-  <link rel="stylesheet" href="styles.min.css" />
+  <link rel="stylesheet" href="styles.css" />
   <link rel="preload" as="video" href="images/1.mp4" type="video/mp4">
-  <!-- Google Fonts -->
+
    <link rel="canonical" href="https://neatgarms.com/" />
    <link rel="preload" as="image" href="images/logo2.png">
+<!-- Preconnect to Google Fonts domains -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Dream+Avenue&family=Poppins&display=swap" rel="stylesheet" />
+<!-- Load Google Fonts stylesheet -->
+<link href="https://fonts.googleapis.com/css2?family=Dream+Avenue&family=Poppins&display=swap" rel="stylesheet" />
 
 
   <!-- Favicon / icons -->
@@ -76,6 +80,200 @@
 }
 </script>
 
+<style>
+
+  
+/* Logo container */
+.popup-logo {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem auto;
+  filter: drop-shadow(0 0 5px #ae866a);
+}
+
+/* Logo image */
+.popup-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+/* Adjust h2 and p text styles for better impact */
+.popup-card h2 {
+  font-family: 'Dream Avenue', sans-serif;
+  font-weight: 100;
+  font-size: 2.2rem;
+  color: white;
+  margin-bottom: 0.3rem;
+  word-break: break-word;
+}
+
+.popup-card p {
+  font-size: 1.2rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  font-weight: 100;
+  word-break: break-word;
+}
+
+.input-group {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.input-group input {
+  font-family: 'Poppins', Times, serif;
+  width: 100%;
+  padding: 1rem 0.5rem 0.5rem 0.5rem;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input-group label {
+  position: absolute;
+  top: 1rem;
+  left: 0.5rem;
+  color: #ccc;
+  pointer-events: none;
+  transition: 0.3s ease;
+  user-select: none;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -1.1rem;
+  font-size: 0.75rem;
+  color: #8a9381;
+  background-color: transparent;
+}
+
+.subscribe-btn {
+  background: linear-gradient(to right, #ae866a, white, #ae866a);
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  width: 100%;
+  color: rgb(0, 0, 0);
+  font-weight: 100;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+
+.subscribe-btn:hover {
+  transform: scale(1.05);
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .popup-card {
+    padding: 1.8rem 1.5rem;
+    max-width: 420px;
+    width: 95%;
+  }
+
+  .popup-card h2 {
+    font-size: 1.9rem;
+  }
+
+  .popup-card p {
+    font-size: 1.1rem;
+  }
+
+  .thank-you-message .brand-name {
+    font-size: 8rem;
+  }
+
+  .thank-you-message .drop-date {
+    font-size: 2rem;
+  }
+
+  .thank-you-message .attractive-text,
+  .thank-you-message .see-you {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-card {
+    padding: 1.5rem 1rem;
+    width: 95%;
+    max-width: 320px;
+    font-size: 0.9rem;
+  }
+
+  .popup-card h2 {
+    font-size: 1.6rem;
+  }
+
+  .popup-card p {
+    font-size: 1rem;
+  }
+
+  .input-group input {
+    font-size: 0.9rem;
+  }
+
+  .subscribe-btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .close-btn {
+    font-size: 1.6rem;
+    top: 8px;
+    right: 12px;
+  }
+
+  .thank-you-message {
+    font-size: 1.3rem;
+    padding: 0 1rem;
+  }
+
+  .thank-you-message .brand-name {
+    font-size: 7rem;
+    letter-spacing: 2px;
+  }
+
+  .thank-you-message .drop-date {
+    font-size: 2rem;
+  }
+
+  .thank-you-message .attractive-text,
+  .thank-you-message .see-you {
+    font-size: 1rem;
+  }
+}
+
+/* Ensure inputs and buttons scale nicely on very small devices */
+@media (max-width: 360px) {
+  .popup-card {
+    padding: 1rem 0.8rem;
+  }
+
+  .input-group input {
+    padding: 0.8rem 0.4rem 0.4rem 0.4rem;
+    font-size: 0.85rem;
+  }
+
+  .subscribe-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}
+
+
+
+</style>
 
 </head>
 <body>
@@ -101,8 +299,11 @@
 
     <!-- Logo -->
     <div class="popup-logo">
-      <!-- You can replace this with an actual image or SVG -->
-      <img src="images/logo2.png" alt="Neat Logo" />
+<img src="images/logo2.png"
+     alt="Neat Logo"
+     fetchpriority="high"
+     width="100%" height="100%"
+     decoding="async">
     </div>
 
     <h2>Snooze you lose</h2>
@@ -131,6 +332,11 @@
 
 
 
+<script>
+  window.addEventListener('DOMContentLoaded', ()=>{
+    requestIdleCallback(()=>AOS.init({duration:1200,once:false}));
+  });
+</script>
 
   <script type="module" src="scripts.min.js" defer></script>
 
@@ -143,6 +349,89 @@
 </script>
 
 
+<script type="module">
+/* -------------------------------------------------- */
+/* 0.  Firebase config (keep this tiny block up‑front)*/
+const firebaseConfig = {
+  apiKey: "AIzaSyCLC4Dz-qxNOPtRFhybiBA5SqCDJgvKqMY",
+  authDomain: "neat-53fa9.firebaseapp.com",
+  projectId: "neat-53fa9",
+  storageBucket: "neat-53fa9.appspot.com",
+  messagingSenderId: "857317417173",
+  appId: "1:857317417173:web:6b84a45c96ebe56fce425c"
+};
+/* -------------------------------------------------- */
+
+/* 1.  Cache the db instance after first load */
+let db = null;
+
+/* 2.  DOM elements */
+const form        = document.getElementById("subscribeForm");
+const emailInput  = document.getElementById("email");
+const popupCard   = document.getElementById("popupCard");
+const thankYouMsg = document.getElementById("thankYouMsg");
+const overlay     = document.getElementById("subscriptionPopup");
+const bgVideo     = document.getElementById("bgVideo");
+
+/* 3.  Helper: load Firebase _only when needed_ */
+async function getDatabase() {
+  if (db) return db;                       // already loaded ✔
+
+  const [{ initializeApp }, firestore] = await Promise.all([
+    import("https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js"),
+    import("https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-lite.js")
+  ]);
+
+  const app = initializeApp(firebaseConfig);
+  db = firestore.getFirestore(app);
+  return db;
+}
+
+/* 4.  Form submit handler */
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = emailInput.value.trim();
+  if (!email) { alert("Please enter a valid email."); return; }
+
+  try {
+    const database = await getDatabase();   // ⏱️ loads Firebase here
+    const { collection, addDoc, serverTimestamp } = await import(
+      "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-lite.js"
+    );
+
+    await addDoc(collection(database, "email"), {
+      email,
+      timestamp: serverTimestamp(),
+    });
+
+    /* 5.  UI transitions (unchanged) */
+    popupCard.classList.add("hide");
+    popupCard.addEventListener("animationend", () => {
+      popupCard.style.display = "none";
+      thankYouMsg.classList.add("visible");
+      bgVideo.style.transition = overlay.style.transition = "filter .6s ease";
+      bgVideo.style.filter = "brightness(.6) blur(1px)";
+      overlay.style.backdropFilter = "blur(5px)";
+    }, { once:true });
+
+  } catch (err) {
+    console.error(err);
+    alert("Oops! There was an error subscribing. Please try again.");
+  }
+});
+
+form.addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  form.classList.add("loading");          // 1 line feedback
+  try{
+    const db = await getDatabase();       // loads if not cached
+    /* … save email … */
+  }finally{
+    form.classList.remove("loading");
+  }
+});
+
+</script>
 
 
 </body>
