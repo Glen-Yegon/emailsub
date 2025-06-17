@@ -330,28 +330,31 @@
 
   </div>
 
+<!-- Already‑Subscribed Message (hidden by default) -->
+<div id="alreadySubscribedMsg" class="popup-msg">
+  <button class="close-btn" id="closeAlreadyBtn" aria-label="Close message">&times;</button>
+  <h2>Already in the Neat team</h2>
+</div>
+
+
+
 
 
 <script>
-  window.addEventListener('DOMContentLoaded', ()=>{
-    requestIdleCallback(()=>AOS.init({duration:1200,once:false}));
-  });
-</script>
-
-  <script type="module" src="scripts.min.js" defer></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
-<script>
-  AOS.init({
-    duration: 1200, // Animation duration
-    once: false,    // Animation will run every time you scroll
+  // Wait until the DOM and external scripts are ready
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.AOS) {
+      window.AOS.init({
+        duration: 1200,
+        once: false,
+      });
+    }
   });
 </script>
 
 
 <script type="module">
-/* -------------------------------------------------- */
-/* 0.  Firebase config (keep this tiny block up‑front)*/
+/* ---------- 0. Firebase config ---------- */
 const firebaseConfig = {
   apiKey: "AIzaSyCLC4Dz-qxNOPtRFhybiBA5SqCDJgvKqMY",
   authDomain: "neat-53fa9.firebaseapp.com",
@@ -360,51 +363,63 @@ const firebaseConfig = {
   messagingSenderId: "857317417173",
   appId: "1:857317417173:web:6b84a45c96ebe56fce425c"
 };
-/* -------------------------------------------------- */
 
-/* 1.  Cache the db instance after first load */
+/* ---------- 1. Lazy‑initialise DB ---------- */
 let db = null;
-
-/* 2.  DOM elements */
-const form        = document.getElementById("subscribeForm");
-const emailInput  = document.getElementById("email");
-const popupCard   = document.getElementById("popupCard");
-const thankYouMsg = document.getElementById("thankYouMsg");
-const overlay     = document.getElementById("subscriptionPopup");
-const bgVideo     = document.getElementById("bgVideo");
-
-/* 3.  Helper: load Firebase _only when needed_ */
 async function getDatabase() {
-  if (db) return db;                       // already loaded ✔
+  if (db) return db;
 
-  const [{ initializeApp }, firestore] = await Promise.all([
+  const [
+    { initializeApp, getApps },
+    { getFirestore }
+  ] = await Promise.all([
     import("https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js"),
     import("https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-lite.js")
   ]);
 
-  const app = initializeApp(firebaseConfig);
-  db = firestore.getFirestore(app);
+  const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+  db = getFirestore(app);
   return db;
 }
 
-/* 4.  Form submit handler */
+/* ---------- 2. DOM handles ---------- */
+const form             = document.getElementById("subscribeForm");
+const emailInput       = document.getElementById("email");
+const popupCard        = document.getElementById("popupCard");
+const thankYouMsg      = document.getElementById("thankYouMsg");
+const overlay          = document.getElementById("subscriptionPopup");
+const bgVideo          = document.getElementById("bgVideo");
+const alreadyMsg       = document.getElementById("alreadySubscribedMsg");
+const closeAlreadyBtn  = document.getElementById("closeAlreadyBtn");
+
+/* ---------- 3. Submit handler ---------- */
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const email = emailInput.value.trim();
-  if (!email) { alert("Please enter a valid email."); return; }
+  form.classList.add("loading");
+
+  const email = emailInput.value.trim().toLowerCase();
+  if (!email) { alert("Please enter a valid email."); form.classList.remove("loading"); return; }
 
   try {
-    const database = await getDatabase();   // ⏱️ loads Firebase here
-    const { collection, addDoc, serverTimestamp } = await import(
-      "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-lite.js"
-    );
+    const database = await getDatabase();
+    const { doc, getDoc, setDoc, serverTimestamp } =
+      await import("https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-lite.js");
 
-    await addDoc(collection(database, "email"), {
-      email,
-      timestamp: serverTimestamp(),
-    });
+    const docRef  = doc(database, "email", email);
+    const docSnap = await getDoc(docRef);
 
-    /* 5.  UI transitions (unchanged) */
+    /* ---- duplicate logic ---- */
+    if (docSnap.exists()) {
+      // Show “already subscribed” pop‑up (and keep close button functional)
+      alreadyMsg.classList.add("visible");
+      closeAlreadyBtn.addEventListener("click", () => {
+        alreadyMsg.classList.remove("visible");
+      }, { once: true });
+    } else {
+      await setDoc(docRef, { email, timestamp: serverTimestamp() });
+    }
+
+    /* ---------- 4. Success UI (always) ---------- */
     popupCard.classList.add("hide");
     popupCard.addEventListener("animationend", () => {
       popupCard.style.display = "none";
@@ -412,26 +427,17 @@ form.addEventListener("submit", async (e) => {
       bgVideo.style.transition = overlay.style.transition = "filter .6s ease";
       bgVideo.style.filter = "brightness(.6) blur(1px)";
       overlay.style.backdropFilter = "blur(5px)";
-    }, { once:true });
+    }, { once: true });
 
   } catch (err) {
     console.error(err);
     alert("Oops! There was an error subscribing. Please try again.");
-  }
-});
-
-form.addEventListener("submit", async (e)=>{
-  e.preventDefault();
-  form.classList.add("loading");          // 1 line feedback
-  try{
-    const db = await getDatabase();       // loads if not cached
-    /* … save email … */
-  }finally{
+  } finally {
     form.classList.remove("loading");
   }
 });
-
 </script>
+
 
 
 </body>
