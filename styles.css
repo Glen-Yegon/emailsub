@@ -8,19 +8,22 @@
   font-display: swap;
 }
 
-/* Background Video */
-#bgVideo {
+/* Background Image */
+body::before {
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  background-image: url('images/lp12\(main\).webp');
+  background-size: cover;
+  background-position: center;
   filter: brightness(0.7) blur(1px);
   z-index: -1;
-  transition: filter 1s ease;
-  pointer-events: none; 
+  pointer-events: none;
 }
+
 
 /* Subscription Popup */
 .overlay {
