@@ -20,12 +20,29 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('images/lp12\(main\).webp');
+
+  /* the image you already have */
+  background-image: url('images/lp12(main).webp');
   background-size: cover;
   background-position: center;
+
+  /* visual tweaks */
   filter: brightness(0.5) blur(1px);
-  z-index: -1;
   pointer-events: none;
+  z-index: -1;
+
+  /* NEW ↓ – start slightly zoomed‑in and animate down to normal */
+  transform: scale(1.15);          /* 15 % zoom‑in at start */
+  transform-origin: center center; /* keep it centered */
+  will-change: transform;          /* hint for smoother anim */
+
+  animation: bgZoom 2s ease-out forwards;
+}
+
+/* Keyframes for the zoom‑out */
+@keyframes bgZoom {
+  0%   { transform: scale(1.15); } /* keep the initial zoom */
+  100% { transform: scale(1); }    /* end at normal size */
 }
 
 
