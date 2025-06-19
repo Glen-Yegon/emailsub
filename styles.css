@@ -7,6 +7,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 html, body {
   background-color: #ae866a; /* Your brand’s dark theme or accent color */
 }
@@ -22,7 +23,7 @@ body::before {
   background-image: url('images/lp12\(main\).webp');
   background-size: cover;
   background-position: center;
-  filter: brightness(0.7) blur(1px);
+  filter: brightness(0.5) blur(1px);
   z-index: -1;
   pointer-events: none;
 }
