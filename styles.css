@@ -7,6 +7,9 @@
   font-style: normal;
   font-display: swap;
 }
+html, body {
+  background-color: #ae866a; /* Your brand’s dark theme or accent color */
+}
 
 /* Background Image */
 body::before {
