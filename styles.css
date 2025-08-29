@@ -9,7 +9,7 @@
 }
 
 html, body {
-  background-color: #ae866a; /* Your brand’s dark theme or accent color */
+  background-color: #8a9381; /* Your brand’s dark theme or accent color */
 }
 
 /* Background Image */
@@ -22,7 +22,7 @@ body::before {
   height: 100vh;
 
   /* the image you already have */
-  background-image: url('images/lp12(main).webp');
+  background-image: url('images/nobody\ gets.jpg');
   background-size: cover;
   background-position: center;
 
@@ -57,7 +57,7 @@ body::before {
   width: 100%;
   height: 100%;
   backdrop-filter: blur(3px);
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,7 +154,7 @@ body::before {
   font-size: 10rem;
   letter-spacing: 4px;
   margin-bottom: 15px;
-  color: #ae866a;
+  color: #8a9381;
   font-weight: 20;
   line-height: 1;
   word-break: break-word;
@@ -197,7 +197,7 @@ body::before {
   width: 92%;
   max-width: 330px;
 
-  background: linear-gradient(to bottom, #8a9381, white, #8a9381);           /* brand colour */
+  background: linear-gradient(to bottom, #ae866a, white, #ae866a);           /* brand colour */
   color: #000000;
   padding: 1rem 1.25rem;
   border-radius: 10px;
