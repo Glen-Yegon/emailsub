@@ -86,13 +86,41 @@
 
 <style>
 
-  
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  background: transparent; /* no background */
+  font-family: 'Poppins', Times, serif;
+}
+
+/* Popup Card */
+.popup-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem 1.5rem;
+  background: transparent; /* fully transparent */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
 /* Logo container */
 .popup-logo {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 1rem auto;
-  filter: drop-shadow(0 0 5px #8a9381);
+  width: 130px;
+  height: 130px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 6px #ae866a);
 }
 
 /* Logo image */
@@ -103,134 +131,102 @@
   border-radius: 15px;
 }
 
-/* Adjust h2 and p text styles for better impact */
-.popup-card h2 {
-  font-family: 'Dream Avenue', sans-serif;
-  font-weight: 100;
-  font-size: 2.2rem;
-  color: white;
-  margin-bottom: 0.3rem;
-  word-break: break-word;
-}
-
-.popup-card p {
-  font-size: 1.2rem;
-  color: white;
-  margin-bottom: 1.5rem;
-  font-weight: 100;
-  word-break: break-word;
-}
-
-.input-group {
+/* Input + Button wrapper */
+.input-button-group {
   position: relative;
-  margin: 1.5rem 0;
+  width: 100%;
 }
 
-.input-group input {
-  font-family: 'Poppins', Times, serif;
+/* Input Field */
+.input-button-group input {
   width: 100%;
-  padding: 1rem 0.5rem 0.5rem 0.5rem;
-  background: transparent;
-  border: none;
-  border-radius: 10px;
-  border-bottom: 1px solid white;
-  color: white;
+  padding: 1rem 4.5rem 1rem 2rem; /* space for button */
+  border: 1px solid black;
+  color: black; /* user text color */
+  background-color: #ae866a;
   font-size: 1rem;
   outline: none;
+  max-width: 400px;
   box-sizing: border-box;
 }
 
-.input-group label {
+/* Placeholder text */
+.input-button-group input::placeholder {
+  color: black;
+  opacity: 0.7; /* optional: slightly faded */
+}
+
+/* Button inside input field */
+.input-button-group .subscribe-btn {
   position: absolute;
-  top: 1rem;
-  left: 0.5rem;
-  color: #ccc;
-  pointer-events: none;
-  transition: 0.3s ease;
-  user-select: none;
-}
-
-.input-group input:focus + label,
-.input-group input:not(:placeholder-shown) + label {
-  top: -1.1rem;
-  font-size: 0.75rem;
-  color: #8a9381;
-  background-color: transparent;
-}
-
-.subscribe-btn {
-  background: linear-gradient(to right, #8a9381, white, #8a9381);
-  border: none;
-  padding: 0.8rem 2rem;
-  border-radius: 10px;
-  width: 100%;
-  color: rgb(0, 0, 0);
-  font-weight: 100;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  height: calc(100% - 2px); /* fit inside input height, accounting for border */
+  padding: 0 0.75rem;
+  border: 3px solid #ae866a;
+  background-color: #000000;
+  color: #ae866a;
+  font-weight: bold;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-sizing: border-box;
+}
+
+.input-button-group .subscribe-btn:hover {
+  transform: translateY(-50%) scale(1.05);
 }
 
 
-.subscribe-btn:hover {
-  transform: scale(1.05);
+.star {
+  color: #ae866a;
+  font-size: 0.8rem;  /* smaller size */
+  display: block;     /* ensures it can be positioned */
+  text-align: center; /* center horizontally */
+  margin-top: 0;      /* push to the top of container */
 }
+
+
+/* KEEP IT NEAT Text */
+.keep-it-neat {
+  margin-top: 1.5rem;
+  font-family: 'Dream Avenue', sans-serif;
+  font-size: 1.8rem;
+  color: #ae866a;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .input-button-group input {
+    padding: 1rem 4.5rem 1rem 1.5rem; 
+  }
+
+  .popup-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .input-button-group input,
+  .input-button-group .subscribe-btn {
+    font-size: 0.9rem;
+  }
+
+  .keep-it-neat {
+    font-size: 1.5rem;
+  }
+}
+
 
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-  .popup-card {
-    padding: 1.8rem 1.5rem;
-    max-width: 420px;
-    width: 95%;
-  }
-
-  .popup-card h2 {
-    font-size: 1.9rem;
-  }
-
-  .popup-card p {
-    font-size: 1.1rem;
-  }
-
   .thank-you-message .brand-name {
-    font-size: 8rem;
-  }
-
-  .thank-you-message .drop-date {
     font-size: 2rem;
-  }
-
-  .thank-you-message .attractive-text,
-  .thank-you-message .see-you {
-    font-size: 1rem;
+    font-weight: 400;
   }
 }
 
 @media (max-width: 480px) {
-  .popup-card {
-    padding: 1.5rem 1rem;
-    width: 95%;
-    max-width: 320px;
-    font-size: 0.9rem;
-  }
-
-  .popup-card h2 {
-    font-size: 1.6rem;
-  }
-
-  .popup-card p {
-    font-size: 1rem;
-  }
-
-  .input-group input {
-    font-size: 0.9rem;
-  }
-
-  .subscribe-btn {
-    padding: 0.7rem 1.5rem;
-    font-size: 0.9rem;
-  }
 
   .close-btn {
     font-size: 1.6rem;
@@ -240,11 +236,11 @@
 
   .thank-you-message {
     font-size: 1.3rem;
-    padding: 0 1rem;
+    padding: 1rem 1rem;
   }
 
   .thank-you-message .brand-name {
-    font-size: 7rem;
+    font-size: 2rem;
     letter-spacing: 2px;
   }
 
@@ -258,24 +254,6 @@
   }
 }
 
-/* Ensure inputs and buttons scale nicely on very small devices */
-@media (max-width: 360px) {
-  .popup-card {
-    padding: 1rem 0.8rem;
-  }
-
-  .input-group input {
-    padding: 0.8rem 0.4rem 0.4rem 0.4rem;
-    font-size: 0.85rem;
-  }
-
-  .subscribe-btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
-  }
-}
-
-
 
 </style>
 
@@ -283,40 +261,32 @@
 <body>
 
 <!-- Subscription Popup -->
-<div class="overlay" id="subscriptionPopup" >
+<div class="overlay" id="subscriptionPopup">
   <div class="popup-card" id="popupCard">
 
     <!-- Logo -->
     <div class="popup-logo">
-<img src="images/logo2.webp"
-     alt="Neat Logo"
-     fetchpriority="high"
-     width="600" height="570"
-     decoding="async">
+      <img src="images/logo2.webp" alt="Neat Logo" width="600" height="570" decoding="async" fetchpriority="high">
     </div>
 
-<h2>Be First. Be NEAT.</h2>
-<p>It’s almost here. And it’s a game changer.</p>
-
+    <!-- Form -->
     <form id="subscribeForm">
-      <div class="input-group">
-        <input type="email" id="email" name="email" required placeholder=" " />
-        <label for="email">Your Email</label>
+      <div class="input-button-group">
+        <input type="email" id="email" name="email" required placeholder="Your Email" />
+        <button type="submit" class="subscribe-btn">Subscribe</button>
       </div>
-      <button type="submit" class="subscribe-btn">Keep It Neat</button>
     </form>
 
+    <!-- KEEP IT NEAT text -->
+    <div class="keep-it-neat">KEEP IT NEAT <span class="star">★</span>
+</div>
   </div>
 </div>
 
 
-<div class="thank-you-message hidden" id="thankYouMsg" data-aos="fade-down" data-aos-delay="400">
-  <h1 class="brand-name">Neatgarms</h1>
-  <p class="drop-date">Think you’ve seen it all? Think again.</p>
-  <p class="attractive-text">Something fresh is cooking at Neat. <br>
-We’re about to unveil a collection that pushes the limits of style and creativity. Stay tuned, something exciting is on the horizon.
 
-  <p class="see-you">The drop is coming. Keep your eyes peeled, your style ready, and your excitement on max.</p>
+<div class="thank-you-message hidden" id="thankYouMsg" data-aos="fade-down" data-aos-delay="400">
+  <h1 class="brand-name">Introducing drop :<br> FUTURE NOSTALGIA</h1>
 </div>
 
 
@@ -343,6 +313,7 @@ We’re about to unveil a collection that pushes the limits of style and creativ
     }
   });
 </script>
+
 
 
 <script type="module">
