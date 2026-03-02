@@ -27,7 +27,7 @@ body::before {
   width: 100vw;
   height: 100vh;
 
-  background-image: url("images/landscape.avif");
+  background-image: url("images/DSC03931.jpg.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -71,7 +71,7 @@ body::after {
 /* MOBILE background (change to your real file) */
 @media (max-width: 768px) {
   body::before {
-    background-image: url("images/portrait1.avif");
+    background-image: url("images/DSC03832.jpg.jpeg");
     background-position: center top;
     filter: brightness(0.58) blur(0.8px);
   }
