@@ -8,39 +8,74 @@
   font-display: swap;
 }
 
+/* =========================
+   BACKGROUND (DESKTOP + MOBILE)
+   ========================= */
 html, body {
-  background-color: #ae866a; /* Your brand’s dark theme or accent color */
+  height: 100%;
 }
 
-/* Background Image */
+body {
+  margin: 0;
+}
+
+/* Background Image Layer */
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #000000;
-  /* visual tweaks */
-  filter: brightness(0.5) blur(1px);
+
+  background-image: url("images/landscape.avif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Lighter look */
+  filter: brightness(0.72) blur(0.8px); /* was 0.55 */
+  transform: scale(1.1); /* slightly less zoom */
+  transform-origin: center center;
+  will-change: transform;
+  animation: bgZoom 2s ease-out forwards;
+
+  pointer-events: none;
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0,0,0,0.05) 0%,
+      rgba(0,0,0,0.45) 55%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.25),
+      rgba(0,0,0,0.15)
+    );
   pointer-events: none;
   z-index: -1;
-
-  /* NEW ↓ – start slightly zoomed‑in and animate down to normal */
-  transform: scale(1.15);          /* 15 % zoom‑in at start */
-  transform-origin: center center; /* keep it centered */
-  will-change: transform;          /* hint for smoother anim */
-
-  animation: bgZoom 2s ease-out forwards;
 }
 
-/* Keyframes for the zoom‑out */
+/* Keyframes for the zoom-out */
 @keyframes bgZoom {
-  0%   { transform: scale(1.15); } /* keep the initial zoom */
-  100% { transform: scale(1); }    /* end at normal size */
+  0%   { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }
 
-
+/* MOBILE background (change to your real file) */
+@media (max-width: 768px) {
+  body::before {
+    background-image: url("images/portrait1.avif");
+    background-position: center top;
+    filter: brightness(0.58) blur(0.8px);
+  }
+}
 
 
 /* Subscription Popup */
@@ -51,7 +86,7 @@ body::before {
   z-index: 9999;
   width: 100%;
   height: 100%;
-  background: #000000;
+background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,7 +105,6 @@ body::before {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   text-align: center;
   color: white;
-  backdrop-filter: blur(10px);
   animation: popIn 0.4s ease forwards;
   position: relative;
   transition: opacity 0.5s ease;
@@ -230,4 +264,90 @@ body::before {
 
 .popup-msg .close-btn:hover {
   transform: scale(1.2);
+}
+
+/* =========================
+   DROP COUNTDOWN (SMALL + PREMIUM)
+   ========================= */
+.drop-countdown{
+  width: 100%;
+  max-width: 360px;
+  margin: 0.2rem auto 1rem;
+  text-align: center;
+  color: rgba(233,223,214,0.95);
+}
+
+.drop-meta{
+  font-family: "Poppins", sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.6px;
+  opacity: 0.95;
+  margin-bottom: 0.55rem;
+}
+
+.drop-meta .drop-date,
+.drop-meta .drop-time{
+  color: #ae866a;
+  font-weight: 600;
+}
+
+.timer{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  align-items: stretch;
+}
+
+.t-box{
+  padding: 10px 8px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.38);
+  border: 1px solid rgba(174,134,106,0.22);
+  backdrop-filter: blur(8px);
+}
+
+.t-num{
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.t-lbl{
+  display: block;
+  margin-top: 3px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  color: rgba(233,223,214,0.78);
+}
+
+/* Remove separators (cleaner + smaller) */
+.t-sep{ display: none; }
+
+.drop-note{
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.78rem;
+  color: rgba(233,223,214,0.85);
+}
+
+/* Mobile: tighter + still readable */
+@media (max-width: 480px){
+  .drop-countdown{ max-width: 320px; margin-bottom: 0.85rem; }
+  .drop-meta{ font-size: 0.78rem; margin-bottom: 0.5rem; }
+  .timer{ gap: 6px; }
+  .t-box{ padding: 9px 6px; border-radius: 11px; }
+  .t-num{ font-size: 1rem; }
+  .t-lbl{ font-size: 0.6rem; }
+}
+
+/* Very small phones */
+@media (max-width: 360px){
+  .drop-meta{ font-size: 0.74rem; }
+  .t-num{ font-size: 0.95rem; }
+  .t-box{ padding: 8px 6px; }
 }

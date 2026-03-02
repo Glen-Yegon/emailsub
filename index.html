@@ -269,6 +269,21 @@
       <img src="images/logo2.webp" alt="Neat Logo" width="600" height="570" decoding="async" fetchpriority="high">
     </div>
 
+        <!-- Drop countdown -->
+    <div class="drop-countdown" aria-live="polite">
+      <div class="drop-meta">Drop in <span class="drop-date">9/3/26</span>, <span class="drop-time">0000hrs</span></div>
+      <div class="timer" id="dropTimer">
+        <div class="t-box"><span class="t-num" id="dDays">00</span><span class="t-lbl">Days</span></div>
+        <div class="t-sep">:</div>
+        <div class="t-box"><span class="t-num" id="dHours">00</span><span class="t-lbl">Hrs</span></div>
+        <div class="t-sep">:</div>
+        <div class="t-box"><span class="t-num" id="dMins">00</span><span class="t-lbl">Mins</span></div>
+        <div class="t-sep">:</div>
+        <div class="t-box"><span class="t-num" id="dSecs">00</span><span class="t-lbl">Secs</span></div>
+      </div>
+      <div class="drop-note" id="dropNote"></div>
+    </div>
+
     <!-- Form -->
     <form id="subscribeForm">
       <div class="input-button-group">
@@ -354,6 +369,45 @@ const overlay          = document.getElementById("subscriptionPopup");
 const bgVideo          = document.getElementById("bgVideo");
 const alreadyMsg       = document.getElementById("alreadySubscribedMsg");
 const closeAlreadyBtn  = document.getElementById("closeAlreadyBtn");
+/* ---------- 2b. Drop countdown (Nairobi time +03:00) ---------- */
+const targetDrop = new Date("2026-03-09T00:00:00+03:00"); // 9th March 2026, 0000hrs (Kenya time)
+
+const dDays  = document.getElementById("dDays");
+const dHours = document.getElementById("dHours");
+const dMins  = document.getElementById("dMins");
+const dSecs  = document.getElementById("dSecs");
+const dropNote = document.getElementById("dropNote");
+
+function pad2(n){ return String(n).padStart(2, "0"); }
+
+function updateCountdown(){
+  const now = new Date();
+  let diff = targetDrop - now;
+
+  if (diff <= 0){
+    dDays.textContent  = "00";
+    dHours.textContent = "00";
+    dMins.textContent  = "00";
+    dSecs.textContent  = "00";
+    dropNote.textContent = "Drop is live.";
+    return;
+  }
+
+  const totalSeconds = Math.floor(diff / 1000);
+  const days  = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const mins  = Math.floor((totalSeconds % 3600) / 60);
+  const secs  = totalSeconds % 60;
+
+  dDays.textContent  = pad2(days);
+  dHours.textContent = pad2(hours);
+  dMins.textContent  = pad2(mins);
+  dSecs.textContent  = pad2(secs);
+  dropNote.textContent = "";
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
 /* ---------- 3. Submit handler ---------- */
 form.addEventListener("submit", async (e) => {
