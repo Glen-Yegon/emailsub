@@ -1,461 +1,673 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta property="og:site_name" content="Neatgarms">
-<meta name="description"
-      content="Discover Neatgarms — modern streetwear, everyday essentials and limited drops designed for confident self‑expression. Shipping worldwide from Kenya.">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#ae866a">
-  <title>Neatgarms</title>
 
-<link rel="stylesheet" href="styles.min.css">
+  <!-- =========================================================
+       CORE
+       ========================================================= -->
 
-<!-- Preload Dream Avenue font -->
-<link rel="preload" href="fonts/DreamAvenue.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/DreamAvenue.woff" as="font" type="font/woff" crossorigin>
+  <meta charset="UTF-8">
 
-   <link rel="canonical" href="https://neatgarms.com/" />
-   <link rel="preload" as="image" href="images/nobody\ gets.jpg">
-<!-- Preconnect to Google Fonts domains -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
 
-<!-- Load Google Fonts stylesheet -->
-<link href="https://fonts.googleapis.com/css2?family=Dream+Avenue&family=Poppins&display=swap" rel="stylesheet" />
+  <meta
+    name="theme-color"
+    content="#050505"
+  >
 
+  <meta
+    name="description"
+    content="Neatgarms. Keep It Neat. Join the list for early access to the next drop."
+  >
 
-  <!-- Favicon / icons -->
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
- <link rel="manifest" href="/site.webmanifest?v=3">
-
-  <!-- Open Graph -->
-  <meta property="og:site_name" content="Neatgarms">
-  <meta property="og:title" content="Neatgarms">
-  <meta property="og:description" content="Design your own streetwear with Neat Customs. Create, launch, and flex your unique style. Limited runs. Exclusive drops.">
-  <meta property="og:image" content="https://neatgarms.com/images/lp15m.webp">
-  <meta property="og:url" content="https://neatgarms.com/">
-  <meta property="og:type" content="website">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Neatgarms — Premium Urban Wear">
-  <meta name="twitter:description" content="Explore our modern streetwear collections and elevate your look.">
-  <meta name="twitter:image" content="https://neatgarms.com/images/lp15m.webp">
+  <title>Neatgarms — Keep It Neat</title>
 
 
-  <!-- Organization structured data -->
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Neatgarms",
-  "url": "https://neatgarms.com",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Neatgarms",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://neatgarms.com/logo.png"
-    }
-  },
-  "sameAs": [
-    "https://www.instagram.com/neatgarms"
-  ]
-}
-  </script>
+  <!-- =========================================================
+       SEO
+       ========================================================= -->
 
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Neatgarms",
-  "url": "https://neatgarms.com",
-  "logo": "https://neatgarms.com/logo.png",
-  "description": "Neatgarms is a premium clothing brand delivering timeless style, modern comfort and authentic expression.",
-  "sameAs": [
-    "https://www.instagram.com/neatgarms"
-  ]
-}
-</script>
+  <link
+    rel="canonical"
+    href="https://neatgarms.com/"
+  >
 
-<style>
+  <meta
+    property="og:site_name"
+    content="Neatgarms"
+  >
 
-/* Overlay */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  box-sizing: border-box;
-  background: transparent; /* no background */
-  font-family: 'Poppins', Times, serif;
-}
+  <meta
+    property="og:title"
+    content="Neatgarms — Keep It Neat"
+  >
 
-/* Popup Card */
-.popup-card {
-  width: 100%;
-  max-width: 400px;
-  padding: 2rem 1.5rem;
-  background: transparent; /* fully transparent */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-}
+  <meta
+    property="og:description"
+    content="A new Neatgarms drop is approaching. Join the list for early access."
+  >
 
-/* Logo container */
-.popup-logo {
-  width: 130px;
-  height: 130px;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 6px #ae866a);
-}
+  <meta
+    property="og:type"
+    content="website"
+  >
 
-/* Logo image */
-.popup-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 15px;
-}
+  <meta
+    property="og:url"
+    content="https://neatgarms.com/"
+  >
 
-/* Input + Button wrapper */
-.input-button-group {
-  position: relative;
-  width: 100%;
-}
-
-/* Input Field */
-.input-button-group input {
-  width: 100%;
-  padding: 1rem 4.5rem 1rem 2rem; /* space for button */
-  border: 1px solid black;
-  color: black; /* user text color */
-  background-color: #ae866a;
-  font-size: 1rem;
-  outline: none;
-  max-width: 400px;
-  box-sizing: border-box;
-}
-
-/* Placeholder text */
-.input-button-group input::placeholder {
-  color: black;
-  opacity: 0.7; /* optional: slightly faded */
-}
-
-/* Button inside input field */
-.input-button-group .subscribe-btn {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  height: calc(100% - 2px); /* fit inside input height, accounting for border */
-  padding: 0 0.75rem;
-  border: 3px solid #ae866a;
-  background-color: #000000;
-  color: #ae866a;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.input-button-group .subscribe-btn:hover {
-  transform: translateY(-50%) scale(1.05);
-}
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
 
 
-.star {
-  color: #ae866a;
-  font-size: 0.8rem;  /* smaller size */
-  display: block;     /* ensures it can be positioned */
-  text-align: center; /* center horizontally */
-  margin-top: 0;      /* push to the top of container */
-}
+  <!-- =========================================================
+       PRELOADS
+       ========================================================= -->
+
+  <link
+    rel="preload"
+    href="fonts/DreamAvenue.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  >
+
+  <link
+    rel="preload"
+    href="images/bastarddesk.jpg"
+    as="image"
+    media="(min-width: 769px)"
+  >
+
+  <link
+    rel="preload"
+    href="images/bastardmobile2.jpg"
+    as="image"
+    media="(max-width: 768px)"
+  >
 
 
-/* KEEP IT NEAT Text */
-.keep-it-neat {
-  margin-top: 1.5rem;
-  font-family: 'Dream Avenue', sans-serif;
-  font-size: 1.8rem;
-  color: #ae866a;
-  text-align: center;
-  letter-spacing: 1px;
-}
+  <!-- =========================================================
+       GOOGLE FONT
+       ========================================================= -->
 
-/* Responsive */
-@media (max-width: 480px) {
-  .input-button-group input {
-    padding: 1rem 4.5rem 1rem 1.5rem; 
-  }
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
 
-  .popup-card {
-    padding: 1.5rem 1rem;
-  }
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
-  .input-button-group input,
-  .input-button-group .subscribe-btn {
-    font-size: 0.9rem;
-  }
-
-  .keep-it-neat {
-    font-size: 1.5rem;
-  }
-}
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
 
+  <!-- =========================================================
+       CSS
+       ========================================================= -->
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .thank-you-message .brand-name {
-    font-size: 2rem;
-    font-weight: 400;
-  }
-}
-
-@media (max-width: 480px) {
-
-  .close-btn {
-    font-size: 1.6rem;
-    top: 8px;
-    right: 12px;
-  }
-
-  .thank-you-message {
-    font-size: 1.3rem;
-    padding: 1rem 1rem;
-  }
-
-  .thank-you-message .brand-name {
-    font-size: 2rem;
-    letter-spacing: 2px;
-  }
-
-  .thank-you-message .drop-date {
-    font-size: 2rem;
-  }
-
-  .thank-you-message .attractive-text,
-  .thank-you-message .see-you {
-    font-size: 1rem;
-  }
-}
-
-
-</style>
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
 
 </head>
+
+
 <body>
 
-<!-- Subscription Popup -->
-<div class="overlay" id="subscriptionPopup">
-  <div class="popup-card" id="popupCard">
 
-    <!-- Logo -->
-    <div class="popup-logo">
-      <img src="images/logo2.webp" alt="Neat Logo" width="600" height="570" decoding="async" fetchpriority="high">
+  <!-- =========================================================
+       INTRO CURTAIN
+       ========================================================= -->
+
+  <div
+    class="intro-curtain"
+    id="introCurtain"
+    aria-hidden="true"
+  >
+
+    <div class="intro-curtain__inner">
+
+      <span
+        class="intro-code scramble"
+        data-text="NEATGARMS"
+      >
+        NEATGARMS
+      </span>
+
+      <span class="intro-status">
+        INITIALISING DROP
+      </span>
+
     </div>
-
-        <!-- Drop countdown -->
-    <div class="drop-countdown" aria-live="polite">
-      <div class="drop-meta">Drop in <span class="drop-date">9/3/26</span>, <span class="drop-time">0000hrs</span></div>
-      <div class="timer" id="dropTimer">
-        <div class="t-box"><span class="t-num" id="dDays">00</span><span class="t-lbl">Days</span></div>
-        <div class="t-sep">:</div>
-        <div class="t-box"><span class="t-num" id="dHours">00</span><span class="t-lbl">Hrs</span></div>
-        <div class="t-sep">:</div>
-        <div class="t-box"><span class="t-num" id="dMins">00</span><span class="t-lbl">Mins</span></div>
-        <div class="t-sep">:</div>
-        <div class="t-box"><span class="t-num" id="dSecs">00</span><span class="t-lbl">Secs</span></div>
-      </div>
-      <div class="drop-note" id="dropNote"></div>
-    </div>
-
-    <!-- Form -->
-    <form id="subscribeForm">
-      <div class="input-button-group">
-        <input type="email" id="email" name="email" required placeholder="Your Email" />
-        <button type="submit" class="subscribe-btn">Subscribe</button>
-      </div>
-    </form>
-
-    <!-- KEEP IT NEAT text -->
-    <div class="keep-it-neat">KEEP IT NEAT <span class="star">★</span>
-</div>
-  </div>
-</div>
-
-
-
-<div class="thank-you-message hidden" id="thankYouMsg" data-aos="fade-down" data-aos-delay="400">
-  <h1 class="brand-name">Introducing Capsule :<br> CHAPTER </h1>
-</div>
-
 
   </div>
 
-<!-- Already‑Subscribed Message (hidden by default) -->
-<div id="alreadySubscribedMsg" class="popup-msg">
-  <button class="close-btn" id="closeAlreadyBtn" aria-label="Close message">&times;</button>
-  <h2>Confirmed: You’re Part of The Vision</h2>
-</div>
+
+
+  <!-- =========================================================
+       MAIN DROP EXPERIENCE
+       ========================================================= -->
+
+  <main
+    class="drop-page"
+    id="dropPage"
+  >
+
+
+    <!-- =======================================================
+         TOP LOGO
+         ======================================================= -->
+
+    <header class="brand-header">
+
+      <div class="brand-logo-wrap">
+
+        <img
+          class="brand-logo"
+          src="images/logo2.webp"
+          alt="Neatgarms"
+          width="600"
+          height="570"
+          decoding="async"
+          fetchpriority="high"
+        >
+
+      </div>
+
+    </header>
 
 
 
+    <!-- =======================================================
+         LEFT COUNTDOWN
+         ======================================================= -->
+
+    <aside
+      class="side-panel side-panel--left"
+      aria-label="Drop countdown"
+    >
+
+      <div class="side-marker">
+        DROP / 09.10.26
+      </div>
 
 
-<script>
-  // Wait until the DOM and external scripts are ready
-  window.addEventListener('DOMContentLoaded', () => {
-    if (window.AOS) {
-      window.AOS.init({
-        duration: 1200,
-        once: false,
-      });
-    }
-  });
-</script>
+      <div
+        class="vertical-countdown"
+        id="dropTimer"
+        aria-live="polite"
+      >
+
+        <div class="countdown-unit">
+
+          <span
+            class="countdown-number scramble-number"
+            id="dDays"
+          >
+            00
+          </span>
+
+          <span class="countdown-label">
+            D
+          </span>
+
+        </div>
+
+
+        <div class="countdown-unit">
+
+          <span
+            class="countdown-number scramble-number"
+            id="dHours"
+          >
+            00
+          </span>
+
+          <span class="countdown-label">
+            H
+          </span>
+
+        </div>
+
+
+        <div class="countdown-unit">
+
+          <span
+            class="countdown-number scramble-number"
+            id="dMins"
+          >
+            00
+          </span>
+
+          <span class="countdown-label">
+            M
+          </span>
+
+        </div>
+
+
+        <div class="countdown-unit">
+
+          <span
+            class="countdown-number scramble-number"
+            id="dSecs"
+          >
+            00
+          </span>
+
+          <span class="countdown-label">
+            S
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="drop-live-message"
+        id="dropNote"
+      ></div>
+
+    </aside>
 
 
 
-<script type="module">
-/* ---------- 0. Firebase config ---------- */
-const firebaseConfig = {
-  apiKey: "AIzaSyCLC4Dz-qxNOPtRFhybiBA5SqCDJgvKqMY",
-  authDomain: "neat-53fa9.firebaseapp.com",
-  projectId: "neat-53fa9",
-  storageBucket: "neat-53fa9.appspot.com",
-  messagingSenderId: "857317417173",
-  appId: "1:857317417173:web:6b84a45c96ebe56fce425c"
-};
+    <!-- =======================================================
+         RIGHT KIN
+         ======================================================= -->
 
-/* ---------- 1. Lazy‑initialise DB ---------- */
-let db = null;
-async function getDatabase() {
-  if (db) return db;
+    <aside
+      class="side-panel side-panel--right"
+      aria-label="Keep It Neat"
+    >
 
-  const [
-    { initializeApp, getApps },
-    { getFirestore }
-  ] = await Promise.all([
-    import("https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js"),
-    import("https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-lite.js")
-  ]);
+      <div class="kin-wrapper">
 
-  const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
-  db = getFirestore(app);
-  return db;
-}
+        <span
+          class="kin-letter scramble"
+          data-text="K"
+        >
+          K
+        </span>
 
-/* ---------- 2. DOM handles ---------- */
-const form             = document.getElementById("subscribeForm");
-const emailInput       = document.getElementById("email");
-const popupCard        = document.getElementById("popupCard");
-const thankYouMsg      = document.getElementById("thankYouMsg");
-const overlay          = document.getElementById("subscriptionPopup");
-const bgVideo          = document.getElementById("bgVideo");
-const alreadyMsg       = document.getElementById("alreadySubscribedMsg");
-const closeAlreadyBtn  = document.getElementById("closeAlreadyBtn");
-/* ---------- 2b. Drop countdown (Nairobi time +03:00) ---------- */
-const targetDrop = new Date("2026-03-09T00:00:00+03:00"); // 9th March 2026, 0000hrs (Kenya time)
+        <span
+          class="kin-letter scramble"
+          data-text="I"
+        >
+          I
+        </span>
 
-const dDays  = document.getElementById("dDays");
-const dHours = document.getElementById("dHours");
-const dMins  = document.getElementById("dMins");
-const dSecs  = document.getElementById("dSecs");
-const dropNote = document.getElementById("dropNote");
+        <span
+          class="kin-letter scramble"
+          data-text="N"
+        >
+          N
+        </span>
 
-function pad2(n){ return String(n).padStart(2, "0"); }
+      </div>
 
-function updateCountdown(){
-  const now = new Date();
-  let diff = targetDrop - now;
 
-  if (diff <= 0){
-    dDays.textContent  = "00";
-    dHours.textContent = "00";
-    dMins.textContent  = "00";
-    dSecs.textContent  = "00";
-    dropNote.textContent = "Drop is live.";
-    return;
-  }
+      <span class="kin-caption">
+        KEEP IT NEAT
+      </span>
 
-  const totalSeconds = Math.floor(diff / 1000);
-  const days  = Math.floor(totalSeconds / 86400);
-  const hours = Math.floor((totalSeconds % 86400) / 3600);
-  const mins  = Math.floor((totalSeconds % 3600) / 60);
-  const secs  = totalSeconds % 60;
+    </aside>
 
-  dDays.textContent  = pad2(days);
-  dHours.textContent = pad2(hours);
-  dMins.textContent  = pad2(mins);
-  dSecs.textContent  = pad2(secs);
-  dropNote.textContent = "";
-}
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
 
-/* ---------- 3. Submit handler ---------- */
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  form.classList.add("loading");
+    <!-- =======================================================
+         CENTRAL CAMPAIGN FRAME
+         ======================================================= -->
 
-  const email = emailInput.value.trim().toLowerCase();
-  if (!email) { alert("Please enter a valid email."); form.classList.remove("loading"); return; }
+    <section class="campaign-frame">
 
-  try {
-    const database = await getDatabase();
-    const { doc, getDoc, setDoc, serverTimestamp } =
-      await import("https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-lite.js");
 
-    const docRef  = doc(database, "email", email);
-    const docSnap = await getDoc(docRef);
+      <!-- IMAGE -->
+      <div class="campaign-image-wrap">
 
-    /* ---- duplicate logic ---- */
-    if (docSnap.exists()) {
-      // Show “already subscribed” pop‑up (and keep close button functional)
-      alreadyMsg.classList.add("visible");
-      closeAlreadyBtn.addEventListener("click", () => {
-        alreadyMsg.classList.remove("visible");
-      }, { once: true });
-    } else {
-      await setDoc(docRef, { email, timestamp: serverTimestamp() });
-    }
+        <picture>
 
-    /* ---------- 4. Success UI (always) ---------- */
-    popupCard.classList.add("hide");
-    popupCard.addEventListener("animationend", () => {
-      popupCard.style.display = "none";
-      thankYouMsg.classList.add("visible");
-      bgVideo.style.transition = overlay.style.transition = "filter .6s ease";
-      bgVideo.style.filter = "brightness(.6) blur(1px)";
-      overlay.style.backdropFilter = "blur(5px)";
-    }, { once: true });
+          <source
+            media="(max-width: 768px)"
+            srcset="images/bastardmobile2.jpg"
+          >
 
-  } catch (err) {
-    console.error(err);
-    alert("Oops! There was an error subscribing. Please try again.");
-  } finally {
-    form.classList.remove("loading");
-  }
-});
-</script>
+          <img
+            src="images/bastarddesk.jpg"
+            alt=""
+            class="campaign-image"
+            id="campaignImage"
+            decoding="async"
+            fetchpriority="high"
+          >
 
+        </picture>
+
+      </div>
+
+
+
+      <!-- DARK CINEMATIC TREATMENT -->
+      <div
+        class="cinematic-overlay"
+        aria-hidden="true"
+      ></div>
+
+
+
+      <!-- FILM GRAIN -->
+      <div
+        class="film-grain"
+        aria-hidden="true"
+      ></div>
+
+
+
+      <!-- SCAN TEXTURE -->
+      <div
+        class="scan-lines"
+        aria-hidden="true"
+      ></div>
+
+
+
+      <!-- GRID -->
+      <div
+        class="technical-grid"
+        aria-hidden="true"
+      ></div>
+
+
+
+      <!-- FLOATING CROSSHAIRS -->
+      <span
+        class="crosshair crosshair--one"
+        aria-hidden="true"
+      ></span>
+
+      <span
+        class="crosshair crosshair--two"
+        aria-hidden="true"
+      ></span>
+
+
+
+      <!-- FRAME LINES -->
+      <div
+        class="frame-elements"
+        aria-hidden="true"
+      >
+
+        <span class="frame-line frame-line--top-left"></span>
+        <span class="frame-line frame-line--top-right"></span>
+
+        <span class="frame-line frame-line--bottom-left"></span>
+        <span class="frame-line frame-line--bottom-right"></span>
+
+        <span class="frame-tick frame-tick--left"></span>
+        <span class="frame-tick frame-tick--right"></span>
+
+      </div>
+
+
+
+      <!-- =====================================================
+           CENTRAL SIGNUP
+           ===================================================== -->
+
+      <div
+        class="access-panel"
+        id="accessPanel"
+      >
+
+
+        <span
+          class="access-eyebrow scramble"
+          data-text="PRIVATE ACCESS"
+        >
+          PRIVATE ACCESS
+        </span>
+
+
+        <h1
+          class="access-title scramble"
+          data-text="BE FIRST IN."
+        >
+          BE FIRST IN.
+        </h1>
+
+
+        <p class="access-copy">
+          Join the list for early access before the next Neatgarms drop goes public.
+        </p>
+
+
+
+        <form
+          id="subscribeForm"
+          class="access-form"
+          novalidate
+        >
+
+          <div class="email-field">
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              inputmode="email"
+              placeholder="ENTER YOUR EMAIL"
+              aria-label="Email address"
+              required
+            >
+
+
+            <button
+              type="submit"
+              class="access-button"
+              id="subscribeButton"
+            >
+
+              <span class="button-text">
+                GET ACCESS
+              </span>
+
+              <span
+                class="button-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+
+            </button>
+
+          </div>
+
+        </form>
+
+
+
+        <div class="access-footer">
+
+          <span>
+            09 OCT 2026
+          </span>
+
+          <span>
+            0000 HRS / EAT
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- =====================================================
+           SUCCESS STATE
+           ===================================================== -->
+
+      <div
+        class="success-panel"
+        id="successPanel"
+        aria-live="polite"
+      >
+
+        <span class="success-code">
+          NG / ACCESS
+        </span>
+
+
+        <h2
+          class="success-title"
+          data-success-text="ACCESS GRANTED."
+        >
+          ACCESS GRANTED.
+        </h2>
+
+
+        <p>
+          You're on the list.
+          <br>
+          Watch your inbox.
+        </p>
+
+
+        <span class="success-footer">
+          KEEP IT NEAT.
+        </span>
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =======================================================
+         BOTTOM META
+         ======================================================= -->
+
+    <footer class="drop-footer">
+
+      <span class="footer-item">
+        NAIROBI / KE
+      </span>
+
+      <span class="footer-item footer-item--center">
+        NEATGARMS®
+      </span>
+
+      <span class="footer-item">
+        2026 / DROP
+      </span>
+
+    </footer>
+
+
+  </main>
+
+
+
+  <!-- =========================================================
+       ALREADY SIGNED UP TOAST
+       ========================================================= -->
+
+  <div
+    class="toast"
+    id="alreadySubscribedMsg"
+    role="status"
+    aria-live="polite"
+  >
+
+    <div class="toast-marker">
+      NG
+    </div>
+
+    <div class="toast-copy">
+
+      <span class="toast-label">
+        STATUS
+      </span>
+
+      <strong>
+        YOU'RE ALREADY ON THE LIST.
+      </strong>
+
+    </div>
+
+    <button
+      type="button"
+      class="toast-close"
+      id="closeAlreadyBtn"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+
+  <!-- =========================================================
+       ERROR TOAST
+       ========================================================= -->
+
+  <div
+    class="toast toast--error"
+    id="errorMsg"
+    role="alert"
+    aria-live="assertive"
+  >
+
+    <div class="toast-marker">
+      !
+    </div>
+
+    <div class="toast-copy">
+
+      <span class="toast-label">
+        ERROR
+      </span>
+
+      <strong id="errorText">
+        COULDN'T ADD YOU. TRY AGAIN.
+      </strong>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================================================
+       JS
+       ========================================================= -->
+
+  <script
+    type="module"
+    src="scripts.js"
+  ></script>
 
 
 </body>
+
 </html>
