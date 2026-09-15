@@ -205,7 +205,7 @@ const dropNote =
 
 const targetDrop =
   new Date(
-    "2026-10-09T00:00:00+03:00"
+    "2026-09-28T00:00:00+03:00"
   );
 
 
